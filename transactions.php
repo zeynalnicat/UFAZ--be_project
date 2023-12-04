@@ -2,8 +2,8 @@
 <html lang="en">
 
 <head>
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Transaction Data</title>
     <link rel="stylesheet" href="style.css">
 </head>
@@ -15,6 +15,17 @@
         <input type="text" id="search" name="search" style="width: 100%">
         <button type="submit">Search</button>
     </form>
+
+    <form action="" method="GET">
+        <label for="date_filter">Filter by Date:</label>
+        <input type="date" id="date_filter" name="date_filter">
+        <label for="category_filter">Filter by Category:</label>
+        <input type="text" id="category_filter" name="category_filter">
+        <label for="payment_filter">Filter by Payment Method:</label>
+        <input type="text" id="payment_filter" name="payment_filter">
+        <button type="submit">Apply Filters</button>
+    </form>
+
     <div class="transaction">
         <table>
             <tr>
@@ -32,16 +43,27 @@
             try {
                 $search = isset($_GET['search']) ? $_GET['search'] : '';
 
+                
+                $date_filter = isset($_GET['date_filter']) ? $_GET['date_filter'] : '';
+                $category_filter = isset($_GET['category_filter']) ? $_GET['category_filter'] : '';
+                $payment_filter = isset($_GET['payment_filter']) ? $_GET['payment_filter'] : '';
+
                 $stmt = $conn->prepare("SELECT transaction_id, amount, transaction_date, category_name, method_name 
                                         FROM transactions 
                                         INNER JOIN categories ON transactions.category_id = categories.category_id 
                                         INNER JOIN payment_methods ON transactions.payment_method_id = payment_methods.payment_method_id
-                                        WHERE transaction_id LIKE :search OR 
-                                              amount LIKE :search OR 
-                                              transaction_date LIKE :search OR 
-                                              category_name LIKE :search OR 
-                                              method_name LIKE :search");
+                                        WHERE (transaction_id LIKE :search OR 
+                                               amount LIKE :search OR 
+                                               transaction_date LIKE :search OR 
+                                               category_name LIKE :search OR 
+                                               method_name LIKE :search) AND 
+                                              (transaction_date LIKE :date_filter AND 
+                                               category_name LIKE :category_filter AND 
+                                               method_name LIKE :payment_filter)");
                 $stmt->bindValue(':search', '%' . $search . '%');
+                $stmt->bindValue(':date_filter', '%' . $date_filter . '%');
+                $stmt->bindValue(':category_filter', '%' . $category_filter . '%');
+                $stmt->bindValue(':payment_filter', '%' . $payment_filter . '%');
                 $stmt->execute();
                 $transactions = $stmt->fetchAll(PDO::FETCH_ASSOC);
 
