@@ -11,9 +11,9 @@
         background-color: #333;
         color: white;
         padding: 10px;
-    }
+    }   
 
-    nav.navigation a {
+    nav.navigation a ,p  {
         color: #fff;
         text-decoration: none;
         font-weight: bold;
@@ -27,26 +27,29 @@
 
 <body>
     <nav class="navigation">
-        <a href="index.php">Home</a> &gt; Transaction Data
+    <div style="margin-left:10px ; display: flex; justify-content: space-between; align-items:center ; gap:10px">
+            <a href="index.php">Home</a> <p> &gt; Transaction Data</p> 
+        </div>
     </nav>
     <h1>Transaction Data</h1>
-    <form action="" method="GET">
-        <label for="search">Search:</label>
-        <input type="text" id="search" name="search" style="width: 100%">
-        <button type="submit">Search</button>
-    </form>
+    <div class="form-container" style="display: flex; margin-top:50px;margin-bottom:30px;">
+        <form action="" method="GET">
+            <label for="search">Search:</label>
+            <input  style="width: 100%;" type="text" id="search" name="search">
+            <button type="submit">Search</button>
+        </form>
 
-    <form action="" method="GET">
-        <label for="date_filter">Filter by Date:</label>
-        <input type="date" id="date_filter" name="date_filter">
-        <label for="category_filter">Filter by Category:</label>
-        <input type="text" id="category_filter" name="category_filter">
-        <label for="payment_filter">Filter by Payment Method:</label>
-        <input type="text" id="payment_filter" name="payment_filter">
-        <button type="submit">Apply Filters</button>
-    </form>
-
-    <div class="transaction">
+        <form action="" method="GET">
+            <label for="date_filter">Filter by Date:</label>
+            <input style="width: 100%;" type="date" id="date_filter" name="date_filter">
+            <label for="category_filter">Filter by Category:</label>
+            <input style="width: 100%;" type="text" id="category_filter" name="category_filter">
+            <label for="payment_filter">Filter by Payment Method:</label>
+            <input style="width: 100%;" type="text" id="payment_filter" name="payment_filter">
+            <button  style="width: 100%;" type="submit">Apply Filters</button>
+        </form>
+    </div>
+    <div class="transaction" style="padding-bottom: 40px;">
         <table>
             <tr>
                 <th>Transaction ID</th>

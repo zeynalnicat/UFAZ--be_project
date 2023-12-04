@@ -13,7 +13,7 @@
         padding: 10px;
     }
 
-    nav.navigation a {
+    nav.navigation a , p{
         color: #fff;
         text-decoration: none;
         font-weight: bold;
@@ -27,7 +27,9 @@
 
 <body>
     <nav class="navigation">
-        <a href="index.php">Home</a> &gt; Transaction Data
+        <div style="margin-left:10px ; display: flex; justify-content: space-between; align-items:center ; gap:10px">
+            <a href="index.php">Home</a> <p> &gt; Enter Transaction</p> 
+        </div>
     </nav>
     <h1>Enter Transaction Details</h1>
     <form
@@ -55,7 +57,7 @@
         
         ?>
         <label for="amount">Amount:</label>
-        <input type="number" id="amount" name="amount"
+        <input type="number"  id="amount" name="amount" step="0.1"
             value="<?php echo isset($transaction) ? $transaction['amount'] : ''; ?>" required>
 
         <label for="date">Date of Transaction:</label>

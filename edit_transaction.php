@@ -59,10 +59,12 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
     _ nav.navigation {
         background-color: #333;
         color: white;
+        display: flex;
+        justify-content: space-between;
         padding: 10px;
     }
 
-    nav.navigation a {
+    nav.navigation a , p  {
         color: #fff;
         text-decoration: none;
         font-weight: bold;
@@ -76,7 +78,9 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
 
 <body>
     <nav class="navigation">
-        <a href="index.php">Home</a> &gt; Transaction Data
+    <div style="margin-left:10px ; display: flex; justify-content: space-between; align-items:center ; gap:10px">
+            <a href="index.php">Home</a> <p> &gt; Edit Transaction</p> 
+        </div>
     </nav>
     <h1>Edit Transaction Details</h1>
     <form action="edit_transaction.php" method="post">
