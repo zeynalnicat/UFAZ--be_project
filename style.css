@@ -95,17 +95,13 @@ li {
   display: flex;
   align-items: center;
   flex-direction: row;
-  justify-content: space-between;
+  justify-content: space-around ;
   padding: 20px;
 }
 
 .form-container form {
-  display: flex;
- 
   gap: 10px;
 }
-
-
 
 .form-container label {
   margin-right: 5px;

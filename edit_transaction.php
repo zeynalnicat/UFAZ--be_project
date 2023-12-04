@@ -86,7 +86,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
     <form action="edit_transaction.php" method="post">
         <input type="hidden" name="transaction_id" value="<?php echo $transaction_id; ?>">
         <label for="amount">Amount:</label>
-        <input type="number" id="amount" name="amount" value="<?php echo $transaction['amount']; ?>" required>
+        <input type="number" id="amount" step="0.01" name="amount" value="<?php echo $transaction['amount']; ?>" required>
         <label for="date">Date of Transaction:</label>
         <input type="date" id="date" name="date" value="<?php echo $transaction['transaction_date']; ?>" required>
 

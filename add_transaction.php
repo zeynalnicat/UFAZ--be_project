@@ -57,7 +57,7 @@
         
         ?>
         <label for="amount">Amount:</label>
-        <input type="number"  id="amount" name="amount" step="0.1"
+        <input type="number"  id="amount" name="amount" step="0.01"
             value="<?php echo isset($transaction) ? $transaction['amount'] : ''; ?>" required>
 
         <label for="date">Date of Transaction:</label>

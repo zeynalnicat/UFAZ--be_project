@@ -32,7 +32,7 @@
         </div>
     </nav>
     <h1>Transaction Data</h1>
-    <div class="form-container" style="display: flex; margin-top:50px;margin-bottom:30px;">
+    <div class="form-container" style="margin-top:50px;">
         <form action="" method="GET">
             <label for="search">Search:</label>
             <input  style="width: 100%;" type="text" id="search" name="search">
