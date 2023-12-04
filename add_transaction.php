@@ -1,14 +1,38 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Banking Transactions</title>
     <link rel="stylesheet" href="style.css">
+    <style>
+    _ nav.navigation {
+        background-color: #333;
+        color: white;
+        padding: 10px;
+    }
+
+    nav.navigation a {
+        color: #fff;
+        text-decoration: none;
+        font-weight: bold;
+    }
+
+    nav.navigation a:hover {
+        color: #ffd700;
+    }
+    </style>
 </head>
+
 <body>
+    <nav class="navigation">
+        <a href="index.php">Home</a> &gt; Transaction Data
+    </nav>
     <h1>Enter Transaction Details</h1>
-    <form action="<?php echo isset($_GET['id']) ? 'edit_transaction.php?id=' . $_GET['id'] : 'process_transaction.php'; ?>" method="post">
+    <form
+        action="<?php echo isset($_GET['id']) ? 'edit_transaction.php?id=' . $_GET['id'] : 'process_transaction.php'; ?>"
+        method="post">
 
         <?php
         include 'db_connect.php';
@@ -31,11 +55,13 @@
         
         ?>
         <label for="amount">Amount:</label>
-        <input type="number" id="amount" name="amount" value="<?php echo isset($transaction) ? $transaction['amount'] : ''; ?>" required>
-        
+        <input type="number" id="amount" name="amount"
+            value="<?php echo isset($transaction) ? $transaction['amount'] : ''; ?>" required>
+
         <label for="date">Date of Transaction:</label>
-        <input type="date" id="date" name="date" value="<?php echo isset($transaction) ? $transaction['transaction_date'] : ''; ?>"  required>
-        
+        <input type="date" id="date" name="date"
+            value="<?php echo isset($transaction) ? $transaction['transaction_date'] : ''; ?>" required>
+
         <label for="category">Category:</label>
         <select id="category" name="category" required>
             <option value="">Select Category</option>
@@ -54,7 +80,7 @@
             }
             ?>
         </select>
-        
+
         <label for="payment-method">Payment Method:</label>
         <select id="payment-method" name="payment-method" required>
             <option value="">Select Payment Method</option>
@@ -73,8 +99,9 @@
             }
             ?>
         </select>
-        
+
         <button type="submit"><?php echo isset($_GET['id']) ? 'Save Changes' : 'Submit'; ?></button>
     </form>
 </body>
+
 </html>

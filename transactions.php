@@ -6,9 +6,29 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Transaction Data</title>
     <link rel="stylesheet" href="style.css">
+    <style>
+    _ nav.navigation {
+        background-color: #333;
+        color: white;
+        padding: 10px;
+    }
+
+    nav.navigation a {
+        color: #fff;
+        text-decoration: none;
+        font-weight: bold;
+    }
+
+    nav.navigation a:hover {
+        color: #ffd700;
+    }
+    </style>
 </head>
 
 <body>
+    <nav class="navigation">
+        <a href="index.php">Home</a> &gt; Transaction Data
+    </nav>
     <h1>Transaction Data</h1>
     <form action="" method="GET">
         <label for="search">Search:</label>
